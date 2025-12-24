@@ -3,91 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pearl Blanc - Design Concepts Index</title>
+    <title>Pearl Blanc - Design Concepts Gallery</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .preview-iframe {
             width: 100%;
             height: 100%;
             border: none;
-            pointer-events: none; /* Disable interaction within the preview */
-            transform-origin: top left;
+            pointer-events: none;
+            background-color: white;
         }
-        .preview-container {
-            height: 400px;
-            overflow: hidden;
-            position: relative;
+        .card-hover-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans min-h-screen">
+<body class="bg-stone-50 text-stone-800 font-sans min-h-screen flex flex-col selection:bg-stone-200 selection:text-stone-900">
 
-    <header class="bg-white shadow-sm py-8 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-                Pearl Blanc Design Concepts
+    <!-- Header -->
+    <header class="pt-20 pb-12 px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            <div class="inline-block w-12 h-1 bg-stone-900 mb-4"></div>
+            <h1 class="text-4xl md:text-6xl font-serif font-medium tracking-tight text-stone-900">
+                Pearl Blanc
             </h1>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Overview of the proposed logo mockup galleries. Click on a design to view the full details.
+            <p class="text-lg md:text-xl text-stone-600 font-light max-w-xl mx-auto leading-relaxed">
+                Design Concepts Gallery
+            </p>
+            <p class="text-stone-500 text-sm tracking-wide uppercase">
+                Select a concept below to explore
             </p>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto py-12 px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
             
-            <!-- Design 1 -->
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
-                <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                    <h2 class="text-2xl font-semibold text-gray-800">Design Concept 1</h2>
-                    <a href="logo-design-1.html" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors">
-                        View Full Page
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                    </a>
+            <!-- Design 1 Card -->
+            <div class="group relative bg-white rounded-xl overflow-hidden shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-500 ease-out transform hover:-translate-y-1">
+                <!-- Preview Area -->
+                <div class="relative aspect-[16/10] bg-stone-100 overflow-hidden border-b border-stone-100">
+                    <iframe src="logo-design-1.html" class="preview-iframe opacity-0 transition-opacity duration-700" onload="this.classList.remove('opacity-0')" title="Design 1 Preview"></iframe>
+                    
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/5 transition-colors duration-300"></div>
+                    
+                    <!-- Action Button (Centered on hover) -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="px-6 py-3 bg-white/90 backdrop-blur-sm text-stone-900 font-medium rounded-full shadow-lg hover:bg-white hover:scale-105 transition-all duration-200 flex items-center gap-2">
+                            View Concept
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </span>
+                    </div>
+
+                    <!-- Full Card Link -->
+                    <a href="logo-design-1.html" class="absolute inset-0 z-20" aria-label="View Design Concept 1"></a>
                 </div>
-                <div class="preview-container bg-gray-100 relative group-hover:opacity-95 transition-opacity">
-                    <!-- We use scrolling="no" to hide scrollbars in preview -->
-                    <iframe src="logo-design-1.html" class="preview-iframe" scrolling="no" title="Design 1 Preview"></iframe>
-                    <a href="logo-design-1.html" class="absolute inset-0 z-10" aria-label="View Design 1"></a>
-                </div>
-                <div class="p-6 bg-gray-50">
-                    <p class="text-gray-500 text-sm">
-                        Features the "PEARL BLANC" Mockup Gallery with a focus on premium branding contexts.
+
+                <!-- Card Content -->
+                <div class="p-8">
+                    <div class="flex items-baseline justify-between mb-3">
+                        <h2 class="text-2xl font-serif text-stone-900">Concept One</h2>
+                        <span class="text-xs font-semibold tracking-wider text-stone-400 uppercase">Premium</span>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed font-light">
+                        A sophisticated gallery layout focusing on high-end brand application. Features a serif-dominant typography system and immersive mockup presentations suitable for luxury positioning.
                     </p>
+                    <div class="mt-6 flex items-center gap-4 text-sm text-stone-500 font-medium">
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-stone-300"></div>
+                            Serif Typography
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-stone-300"></div>
+                            Detailed Mockups
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Design 2 -->
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
-                <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                    <h2 class="text-2xl font-semibold text-gray-800">Design Concept 2</h2>
-                    <a href="logo-design-2.html" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors">
-                        View Full Page
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                    </a>
+            <!-- Design 2 Card -->
+            <div class="group relative bg-white rounded-xl overflow-hidden shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-500 ease-out transform hover:-translate-y-1">
+                <!-- Preview Area -->
+                <div class="relative aspect-[16/10] bg-stone-100 overflow-hidden border-b border-stone-100">
+                    <iframe src="logo-design-2.html" class="preview-iframe opacity-0 transition-opacity duration-700" onload="this.classList.remove('opacity-0')" title="Design 2 Preview"></iframe>
+                    
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/5 transition-colors duration-300"></div>
+                    
+                    <!-- Action Button -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                        <span class="px-6 py-3 bg-white/90 backdrop-blur-sm text-stone-900 font-medium rounded-full shadow-lg hover:bg-white hover:scale-105 transition-all duration-200 flex items-center gap-2">
+                            View Concept
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </span>
+                    </div>
+
+                    <!-- Full Card Link -->
+                    <a href="logo-design-2.html" class="absolute inset-0 z-20" aria-label="View Design Concept 2"></a>
                 </div>
-                <div class="preview-container bg-gray-100 relative group-hover:opacity-95 transition-opacity">
-                    <iframe src="logo-design-2.html" class="preview-iframe" scrolling="no" title="Design 2 Preview"></iframe>
-                    <a href="logo-design-2.html" class="absolute inset-0 z-10" aria-label="View Design 2"></a>
-                </div>
-                <div class="p-6 bg-gray-50">
-                    <p class="text-gray-500 text-sm">
-                        Alternative "Logo Mockup Gallery" layout using a light off-white background and system fonts.
+
+                <!-- Card Content -->
+                <div class="p-8">
+                    <div class="flex items-baseline justify-between mb-3">
+                        <h2 class="text-2xl font-serif text-stone-900">Concept Two</h2>
+                        <span class="text-xs font-semibold tracking-wider text-stone-400 uppercase">Minimalist</span>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed font-light">
+                        A clean, modern interpretation utilizing system fonts for optimal performance. Emphasizes negative space and clarity, offering a fresh and accessible gallery experience.
                     </p>
+                    <div class="mt-6 flex items-center gap-4 text-sm text-stone-500 font-medium">
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-stone-300"></div>
+                            System Fonts
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-stone-300"></div>
+                            Clean Layout
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="bg-white border-t border-gray-200 mt-12 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-gray-400 text-sm">
-            <p>&copy; 2025 Pearl Blanc Design. All rights reserved.</p>
-        </div>
+    <!-- Footer -->
+    <footer class="py-12 text-center">
+        <div class="w-8 h-px bg-stone-300 mx-auto mb-6"></div>
+        <p class="text-stone-400 text-sm font-light">
+            &copy; 2025 Pearl Blanc. Internal Design Review.
+        </p>
     </footer>
 
 </body>
